@@ -1,14 +1,19 @@
 import React, { useReducer } from "react";
 import "./style.css";
 
+const ACTIONS = {
+  INCREMENT: 'increment',
+  DECREMENT: 'decrement'
+}
+
 export default function App() {
 
   function reducer(state, action) {
-    if(action.type === 'increment') {
+    if(action.type === ACTIONS.INCREMENT) {
       return {count: state.count++}
     }
 
-    if(action.type === 'decrement') {
+    if(action.type === ACTIONS.DECREMENT) {
       return {count: state.count--}
     }
   }
@@ -16,11 +21,11 @@ export default function App() {
   const [state, dispatch] = useReducer(reducer, {count: 0});
 
   function decrement() {
-    dispatch({type: 'decrement'})
+    dispatch({type: ACTIONS.DECREMENT})
   }
 
   function increment() {
-    dispatch({type: 'increment'})
+    dispatch({type: ACTIONS.INCREMENT})
   }
 
   return (
